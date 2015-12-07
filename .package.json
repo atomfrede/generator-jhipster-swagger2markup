@@ -2,7 +2,7 @@
   "name": "generator-jhipster-swagger2markup",
   "version": "0.0.1",
   "description": "JHipster module to create static api docs with swagger2markup",
-  "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup/new/mastere",
+  "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup",
   "author": {
     "name": "Frederik Hahne",
     "email": "atomfrede@gmail.com",
