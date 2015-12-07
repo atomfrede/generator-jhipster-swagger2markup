@@ -38,4 +38,4 @@ Apache-2.0 © [Frederik Hahne](http://atomfrede.github.io/shiny-adventure/)
 [travis-url]: https://travis-ci.org/atomfrede/generator-jhipster-swagger2markup
 [daviddm-image]: https://david-dm.org/atomfrede/generator-jhipster-swagger2markup.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/atomfrede/generator-jhipster-swagger2markup
-[result-image]: https://github.com/atomfrede/generator-jhipster-swagger2markup/screen-api.png
+[result-image]: https://raw.githubusercontent.com/atomfrede/generator-jhipster-swagger2markup/master/screen-api.png
