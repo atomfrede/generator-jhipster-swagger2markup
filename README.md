@@ -12,6 +12,8 @@ This plugin adds new tasks to your buildsystem of choice:
 
 The generated static documentation can be found in ``${buildDir}/asciidoc`` as html or pdf.
 
+![resulting html documentation][result-image]
+
 ## Installation
 
 As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed.
