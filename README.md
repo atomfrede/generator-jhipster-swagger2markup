@@ -1,4 +1,4 @@
-# generator-jhipster-swagger2markup ![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-jhipster-swagger2markup [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > JHipster module to create static api docs with [swagger2markup](https://github.com/Swagger2Markup/swagger2markup)
 
 ## Usage
