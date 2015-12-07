@@ -1,0 +1,41 @@
+{
+  "name": "generator-jhipster-swagger2markup",
+  "version": "0.0.1",
+  "description": "JHipster module to create static api docs with swagger2markup",
+  "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup/new/mastere",
+  "author": {
+    "name": "Frederik Hahne",
+    "email": "atomfrede@gmail.com",
+    "url": "http://atomfrede.github.com/shiny-adventure/"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "yeoman-generator",
+    "jhipster-module"
+  ],
+  "dependencies": {
+    "yeoman-generator": "0.21.1",
+    "chalk": "1.0.0",
+    "yosay": "1.0.2",
+    "generator-jhipster": "2.25.0"
+  },
+  "devDependencies": {
+    "yeoman-assert": "2.0.0",
+    "gulp": "3.6.0",
+    "gulp-eslint": "1.0.0",
+    "gulp-exclude-gitignore": "1.0.0",
+    "gulp-istanbul": "0.9.0",
+    "gulp-mocha": "2.0.0",
+    "gulp-plumber": "1.0.0",
+    "gulp-nsp": "2.1.0"
+  },
+  "repository": "atomfrede/generator-jhipster-swagger2markup",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "Apache-2.0"
+}
