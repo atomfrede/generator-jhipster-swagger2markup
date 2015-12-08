@@ -73,10 +73,15 @@ module.exports = yeoman.generators.Base.extend({
     this.packageName = jhipsterVar.packageName;
     this.angularAppName = jhipsterVar.angularAppName;
     var javaDir = jhipsterVar.javaDir;
+    var javaTestDir = 'src/test/java/' + packageName + '/';
     var resourceDir = jhipsterVar.resourceDir;
     var webappDir = jhipsterVar.webappDir;
 
-    this.resultType = this.props.resultType;
+    this.apiDocResultType = this.props.apiDocResultType;
+
+    this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc')
+    this.template('src/test/java/package/web/rest/_Swagger2MarkupTest.java', javaTestDir + 'web/rest/Swagger2MarkupTest.java')
+    this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc')
 
     this.template('src/main/java/package/domain/_Fortune.java', javaDir + 'domain/Fortune.java');
     this.template('src/main/java/package/repository/_FortuneRepository.java', javaDir + 'repository/FortuneRepository.java');

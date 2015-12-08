@@ -3,11 +3,7 @@
   "version": "0.0.1",
   "description": "JHipster module to create nice looking static api docs with swagger2markup",
   "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup",
-  "author": {
-    "name": "Frederik Hahne",
-    "email": "atomfrede@gmail.com",
-    "url": "http://atomfrede.github.com/shiny-adventure/"
-  },
+  "author": "Frederik Hahne <atomfrede@gmail.com> (http://atomfrede.github.com/shiny-adventure/)",
   "files": [
     "generators"
   ],
@@ -32,10 +28,16 @@
     "gulp-plumber": "1.0.0",
     "gulp-nsp": "2.1.0"
   },
-  "repository": "atomfrede/generator-jhipster-swagger2markup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomfrede/generator-jhipster-swagger2markup.git"
+  },
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/atomfrede/generator-jhipster-swagger2markup/issues"
+  }
 }
