@@ -6,23 +6,38 @@ var yosay = require('yosay');
 var jhipster = require('generator-jhipster');
 
 // Stores JHipster variables
-var jhipsterVar = {moduleName: 'fortune'};
+var jhipsterVar = {
+  moduleName: 'swagger2markup'
+};
 
 // Stores JHipster functions
 var jhipsterFunc = {};
 
 module.exports = yeoman.generators.Base.extend({
 
-  templates: function() {
-    this.composeWith('jhipster:modules', { options: {
-        jhipsterVar: jhipsterVar, jhipsterFunc: jhipsterFunc }});
+  initializing: {
+    templates: function() {
+      this.composeWith('jhipster:modules', {
+        options: {
+          jhipsterVar: jhipsterVar,
+          jhipsterFunc: jhipsterFunc
+        }
+      });
+    },
+    checkMaven: function() {
+       if (jhipsterVar.buildTool == 'maven') {
+         console.log(chalk.red.bold('ERROR!')
+         +' Maven isn\'t supported yet...\n');
+         process.exit(1);
+       }
+     },
   },
 
-  prompting: function () {
+  prompting: function() {
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log( yosay(
+    this.log(yosay(
       'Welcome to the ' + chalk.red('JHipster swagger2markup') + ' generator!'
     ));
 
@@ -30,24 +45,20 @@ module.exports = yeoman.generators.Base.extend({
       type: 'list',
       name: 'resultType',
       message: 'Which file types you would like to generate?',
-      choices: [
-                  {
-                      value: 'html5',
-                      name: 'HTML5 '
-                  },
-                  {
-                      value: 'pdf',
-                      name: 'PDF'
-                  },
-                  {
-                      value: 'both',
-                      name: 'Generate HTML5 and PDF'
-                  }
-              ],
-              default: 0
+      choices: [{
+        value: 'html5',
+        name: 'HTML5 '
+      }, {
+        value: 'pdf',
+        name: 'PDF'
+      }, {
+        value: 'both',
+        name: 'Generate HTML5 and PDF'
+      }],
+      default: 0
     }];
 
-    this.prompt(prompts, function (props) {
+    this.prompt(prompts, function(props) {
       this.props = props;
       // To access props later use this.props.someOption;
 
@@ -55,7 +66,7 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
-  writing: function () {
+  writing: function() {
     var done = this.async();
 
     this.baseName = jhipsterVar.baseName;
@@ -92,7 +103,7 @@ module.exports = yeoman.generators.Base.extend({
     done();
   },
 
-  install: function () {
+  install: function() {
     this.installDependencies();
   }
 });
