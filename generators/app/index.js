@@ -43,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'list',
-      name: 'resultType',
+      name: 'apiDocResultType',
       message: 'Which file types you would like to generate?',
       choices: [{
         value: 'html5',
