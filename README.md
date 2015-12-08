@@ -5,10 +5,9 @@
 
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use in a JHipster application.
 
-This plugin adds new tasks to your buildsystem of choice:
+This plugin adds new tasks to your gradle build system (maven is not supported yet):
 
 * ``gradlew asciidoctor``
-* ``mvnw asciidoctor``
 
 The generated static documentation can be found in ``${buildDir}/asciidoc`` as html or pdf.
 
