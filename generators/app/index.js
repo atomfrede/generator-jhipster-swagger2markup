@@ -69,11 +69,11 @@ module.exports = yeoman.generators.Base.extend({
   writing: function() {
     var done = this.async();
 
-    this.baseName = jhipsterVar.baseName;
     this.packageName = jhipsterVar.packageName;
+    this.packageFolder = jhipsterVar.packageFolder;
     this.angularAppName = jhipsterVar.angularAppName;
     var javaDir = jhipsterVar.javaDir;
-    var javaTestDir = 'src/test/java/' + packageName + '/';
+    var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
     var resourceDir = jhipsterVar.resourceDir;
     var webappDir = jhipsterVar.webappDir;
 
@@ -87,7 +87,7 @@ module.exports = yeoman.generators.Base.extend({
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
 
     jhipsterFunc.applyFromGradleScript('swagger2markup');
-    jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', 'springfox_version');
+    jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
     jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
     jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.10.1');
 
