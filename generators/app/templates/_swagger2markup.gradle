@@ -1,11 +1,19 @@
 apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'io.github.robwin.swagger2markup'
 
 ext {
-    generatedAsciidoc = file("${projectDir}/docs/asciidoc/generated")
+    asciiDocOutputDir = file("${buildDir}/asciidoc")
+    swaggerOutputDir = file("${buildDir}/swagger")
+}
+
+convertSwagger2markup {
+    dependsOn test
+    inputDir swaggerOutputDir
+    pathsGroupedBy 'TAGS'
 }
 
 asciidoctor {
-    dependsOn test
+    dependsOn convertSwagger2markup
     sources {
         include 'index.adoc'
     }
@@ -16,11 +24,11 @@ asciidoctor {
     attributes = [
         doctype: 'book',
         toc: 'left',
-        toclevels: '2',
+        toclevels: '3',
         numbered: '',
         sectlinks: '',
         sectanchors: '',
         hardbreaks: '',
-        generated: generatedAsciidoc
+        generated: asciiDocOutputDir
     ]
 }

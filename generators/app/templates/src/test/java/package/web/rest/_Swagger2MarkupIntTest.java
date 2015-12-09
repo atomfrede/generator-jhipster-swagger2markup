@@ -26,21 +26,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
-public class Swagger2MarkupTest {
+public class Swagger2MarkupIntTest {
 
     @Inject
     private WebApplicationContext context;
 
     private MockMvc mockMvc;
 
-    private File projectDir;
-
     @Before
     public void setup() throws IOException {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 
         ClassPathResource pathfileRes = new ClassPathResource("config/application-dev.yml");
-        projectDir = pathfileRes.getFile().getParentFile().getParentFile().getParentFile().getParentFile();
     }
 
 
@@ -48,12 +45,7 @@ public class Swagger2MarkupTest {
     public void convertSwaggerToAsciiDoc() throws Exception {
         this.mockMvc.perform(get("/v2/api-docs")
             .accept(MediaType.APPLICATION_JSON))
-            .andDo(Swagger2MarkupResultHandler
-                .outputDirectory("src/docs/asciidoc/generated").build())
+            .andDo(SwaggerResultHandler.outputDirectory("build/swagger").build())
             .andExpect(status().isOk());
-    }
-
-    private String outputDirForFormat(String format) throws IOException {
-        return new File(projectDir, "docs/" + format + "/generated").getAbsolutePath();
     }
 }

@@ -80,7 +80,7 @@ module.exports = yeoman.generators.Base.extend({
     this.apiDocResultType = this.props.apiDocResultType;
 
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
-    this.template('src/test/java/package/web/rest/_Swagger2MarkupTest.java', javaTestDir + 'web/rest/Swagger2MarkupTest.java');
+    this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java');
 
     this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
 
@@ -90,6 +90,7 @@ module.exports = yeoman.generators.Base.extend({
     jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
     jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
     jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.10.1');
+    jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.1')
 
     done();
   },
