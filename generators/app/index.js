@@ -24,12 +24,6 @@ module.exports = yeoman.generators.Base.extend({
         }
       });
     },
-    checkMaven: function() {
-      if (jhipsterVar.buildTool == 'maven') {
-        console.log(chalk.red.bold('ERROR!') + ' Maven isn\'t supported yet...\n');
-        process.exit(1);
-      }
-    },
   },
 
   prompting: function() {
@@ -83,7 +77,7 @@ module.exports = yeoman.generators.Base.extend({
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
 
     if (jhipsterVar.buildTool == 'gradle') {
-      
+
       this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('swagger2markup');
       jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
@@ -147,9 +141,9 @@ module.exports = yeoman.generators.Base.extend({
       var executions;
 
       if (apiDocResultType === 'both') {
-          executions = '<executions>\n' + htmlOutput + pdfOutput + '</executions>\n';
+        executions = '<executions>\n' + htmlOutput + pdfOutput + '</executions>\n';
       } else if (apiDocResultType === 'html5') {
-          executions = '<executions>\n' + htmlOutput '</executions>\n';
+        executions = '<executions>\n' + htmlOutput '</executions>\n';
       } else if (apiDocResultType === 'pdf') {
         executions = '<executions>\n' + pdfOutput + '</executions>\n';
       }
@@ -167,7 +161,7 @@ module.exports = yeoman.generators.Base.extend({
 
       jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');
       jhipsterFunc.addMavenPlugin('com.redowlanalytics', 'swagger2markup-maven-plugin', '0.8.0', swagger2markupConfiguration);
-      jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + + pluginDependencies + asiidoctorjConfiguration);
+      jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + +pluginDependencies + asiidoctorjConfiguration);
     }
 
 
