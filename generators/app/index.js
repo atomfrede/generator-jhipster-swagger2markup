@@ -140,11 +140,11 @@ module.exports = yeoman.generators.Base.extend({
 
       var executions;
 
-      if (apiDocResultType === 'both') {
+      if (this.apiDocResultType === 'both') {
         executions = '<executions>\n' + htmlOutput + pdfOutput + '</executions>\n';
-      } else if (apiDocResultType === 'html5') {
-        executions = '<executions>\n' + htmlOutput '</executions>\n';
-      } else if (apiDocResultType === 'pdf') {
+      } else if (this.apiDocResultType === 'html5') {
+        executions = '<executions>\n' + htmlOutput + '</executions>\n';
+      } else if (this.apiDocResultType === 'pdf') {
         executions = '<executions>\n' + pdfOutput + '</executions>\n';
       }
 
@@ -161,7 +161,7 @@ module.exports = yeoman.generators.Base.extend({
 
       jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');
       jhipsterFunc.addMavenPlugin('com.redowlanalytics', 'swagger2markup-maven-plugin', '0.8.0', swagger2markupConfiguration);
-      jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + +pluginDependencies + asiidoctorjConfiguration);
+      jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + pluginDependencies + asiidoctorjConfiguration);
     }
 
 
