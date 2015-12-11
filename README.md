@@ -8,10 +8,15 @@ This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use
 This plugin adds new tasks to your gradle build system (maven is not supported yet):
 
 * ``gradlew asciidoctor``
+* ``mvnw install``
 
 The generated static documentation can be found in ``${buildDir}/asciidoc`` as html or pdf.
 
 ![resulting html documentation][result-image]
+
+### Limitation
+
+As the latest ``swagger2markup-maven-plugin`` is not [properly deployed to maven central](https://github.com/Swagger2Markup/swagger2markup-maven-plugin/issues/9) grouping by tag doesn't work with maven yet.
 
 ## Installation
 
