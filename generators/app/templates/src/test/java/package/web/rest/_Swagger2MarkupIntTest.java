@@ -13,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
+import springfox.documentation.staticdocs.SwaggerResultHandler;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -36,10 +36,7 @@ public class Swagger2MarkupIntTest {
     @Before
     public void setup() throws IOException {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
-
-        ClassPathResource pathfileRes = new ClassPathResource("config/application-dev.yml");
     }
-
 
     @Test
     public void convertSwaggerToAsciiDoc() throws Exception {
