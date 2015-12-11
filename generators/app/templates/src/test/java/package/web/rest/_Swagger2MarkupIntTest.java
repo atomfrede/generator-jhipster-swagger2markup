@@ -42,7 +42,8 @@ public class Swagger2MarkupIntTest {
     public void convertSwaggerToAsciiDoc() throws Exception {
         this.mockMvc.perform(get("/v2/api-docs")
             .accept(MediaType.APPLICATION_JSON))
-            .andDo(SwaggerResultHandler.outputDirectory("build/swagger").build())
+            .andDo(SwaggerResultHandler.outputDirectory(<%_ if (buildTool == 'gradle') { _%>"build/swagger"<%_ } else { _%>"target/swagger"<%_ } _%>)
+            .build())
             .andExpect(status().isOk());
     }
 }

@@ -65,18 +65,20 @@ module.exports = yeoman.generators.Base.extend({
     this.packageName = jhipsterVar.packageName;
     this.packageFolder = jhipsterVar.packageFolder;
     this.angularAppName = jhipsterVar.angularAppName;
+    this.buildTool = jhipsterVar.buildTool;
     var javaDir = jhipsterVar.javaDir;
     var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
     var resourceDir = jhipsterVar.resourceDir;
     var webappDir = jhipsterVar.webappDir;
 
+
     this.apiDocResultType = this.props.apiDocResultType;
 
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
-    this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java');
+    this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java', this, {});
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
 
-    if (jhipsterVar.buildTool == 'gradle') {
+    if (this.buildTool == 'gradle') {
 
       this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('swagger2markup');
@@ -85,7 +87,7 @@ module.exports = yeoman.generators.Base.extend({
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.10.1');
       jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.1')
 
-    } else if (jhipsterVar.buildTool == 'maven') {
+    } else if (this.buildTool == 'maven') {
 
       var swagger2markupConfiguration = '<executions>\n' +
         '<execution>\n' +
