@@ -7,7 +7,7 @@ This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use
 
 ### Installation
 
-As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed.
+As this is a [JHipster](http://jhipster.github.io/) module, we expect you have [JHipster and its related tools already installed](http://jhipster.github.io/installation.html).
 
 ```bash
 npm install -g generator-jhipster-swagger2markup
