@@ -5,6 +5,20 @@
 
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use in a JHipster application.
 
+### Installation
+
+As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed.
+
+```bash
+npm install -g generator-jhipster-swagger2markup
+```
+
+Then run the module on a JHipster generated application:
+
+```bash
+yo jhipster-swagger2markup
+```
+
 ### Gradle
 
 This plugin adds new tasks to your gradle build system
@@ -28,20 +42,6 @@ As the latest ``swagger2markup-maven-plugin`` is not [properly deployed to maven
 ### Result
 
 ![resulting html documentation][result-image]
-
-## Installation
-
-As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed.
-
-```bash
-npm install -g generator-jhipster-swagger2markup
-```
-
-Then run the module on a JHipster generated application:
-
-```bash
-yo jhipster-swagger2markup
-```
 
 ## License
 
