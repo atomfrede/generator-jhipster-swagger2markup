@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-swagger2markup",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "JHipster module to create nice looking static api docs with swagger2markup",
   "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup",
   "author": "Frederik Hahne <atomfrede@gmail.com> (http://atomfrede.github.com/shiny-adventure/)",
@@ -16,7 +16,7 @@
     "yeoman-generator": "0.21.1",
     "chalk": "1.0.0",
     "yosay": "1.0.2",
-    "generator-jhipster": "2.25.0"
+    "generator-jhipster": ">=2.26.0"
   },
   "devDependencies": {
     "yeoman-assert": "2.0.0",
