@@ -34,22 +34,30 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the ' + chalk.red('JHipster swagger2markup') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'list',
-      name: 'apiDocResultType',
-      message: 'Which file types you would like to generate?',
-      choices: [{
-        value: 'html5',
-        name: 'HTML5 '
-      }, {
-        value: 'pdf',
-        name: 'PDF'
-      }, {
-        value: 'both',
-        name: 'Generate HTML5 and PDF'
-      }],
-      default: 0
-    }];
+    var prompts = [
+      {
+        type: 'confirm',
+        name: 'installAsciidocSample',
+        message: 'Do you want to have a Asciidoc sample?',
+        default: false
+      },
+      {
+        type: 'list',
+        name: 'apiDocResultType',
+        message: 'Which file types you would like to generate?',
+        choices: [{
+          value: 'html5',
+          name: 'HTML5 '
+        }, {
+          value: 'pdf',
+          name: 'PDF'
+        }, {
+          value: 'both',
+          name: 'Generate HTML5 and PDF'
+        }],
+        default: 0
+      }
+    ];
 
     this.prompt(prompts, function(props) {
       this.props = props;
@@ -69,10 +77,19 @@ module.exports = yeoman.generators.Base.extend({
     var javaDir = jhipsterVar.javaDir;
     var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
     var resourceDir = jhipsterVar.resourceDir;
-    var webappDir = jhipsterVar.webappDir;
-
+    var webappDir = jhipsterVar.webappDir
 
     this.apiDocResultType = this.props.apiDocResultType;
+    this.installAsciidocSample = this.props.installAsciidocSample;
+
+    if (this.installAsciidocSample) {
+      this.template('src/docs/asciidoc/overview/_index.adoc', 'src/docs/asciidoc/overview/index.adoc');
+      this.template('src/docs/asciidoc/overview/_security&authentication.adoc', 'src/docs/asciidoc/overview/security&authentication.adoc');
+      this.template('src/docs/asciidoc/overview/_limitation.adoc', 'src/docs/asciidoc/overview/limitation.adoc');
+      this.template('src/docs/asciidoc/overview/_workflow.adoc', 'src/docs/asciidoc/overview/workflow.adoc');
+      this.template('src/docs/asciidoc/overview/_contact.adoc', 'src/docs/asciidoc/overview/contact.adoc');
+      this.template('src/docs/asciidoc/overview/_information.adoc', 'src/docs/asciidoc/overview/information.adoc');
+    }
 
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
     this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java', this, {});
