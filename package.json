@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-swagger2markup",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "JHipster module to create nice looking static api docs with swagger2markup",
   "homepage": "https://github.com/atomfrede/generator-jhipster-swagger2markup",
   "author": "Frederik Hahne <atomfrede@gmail.com> (http://atomfrede.github.com/shiny-adventure/)",
