@@ -107,7 +107,7 @@ module.exports = yeoman.generators.Base.extend({
         '<dependency>\n' +
         '<groupId>org.asciidoctor</groupId>\n' +
         '<artifactId>asciidoctorj-pdf</artifactId>\n' +
-        '<version>1.5.3.2</version>\n' +
+        '<version>1.5.0-alpha.10.1</version>\n' +
         '</dependency>\n' +
         '<dependency>\n' +
         '<groupId>org.asciidoctor</groupId>\n' +
