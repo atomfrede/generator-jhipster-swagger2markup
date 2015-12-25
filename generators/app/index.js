@@ -15,13 +15,16 @@ var jhipsterFunc = {};
 module.exports = yeoman.generators.Base.extend({
 
   initializing: {
-    templates: function () {
+    templates: function (args) {
       this.composeWith('jhipster:modules', {
         options: {
           jhipsterVar: jhipsterVar,
           jhipsterFunc: jhipsterFunc
         }
       });
+      if (args == 'default') {
+        this.swagger2markupDefault = 'default';
+      }
     }
   },
 
@@ -52,12 +55,20 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
+    if (this.swagger2markupDefault == 'default') {
+      this.apiDocResultType = ["html5", "pdf"];
+      this.installAsciidocSample = true;
       done();
-    }.bind(this));
+    } else {
+      this.prompt(prompts, function (props) {
+        this.props = props;
+        // To access props later use this.props.someOption;
+
+        this.apiDocResultType = this.props.apiDocResultType;
+        this.installAsciidocSample = this.props.installAsciidocSample;
+        done();
+      }.bind(this));
+    }
   },
 
   writing: function () {
@@ -68,9 +79,6 @@ module.exports = yeoman.generators.Base.extend({
     this.angularAppName = jhipsterVar.angularAppName;
     this.buildTool = jhipsterVar.buildTool;
     var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
-
-    this.apiDocResultType = this.props.apiDocResultType;
-    this.installAsciidocSample = this.props.installAsciidocSample;
 
     // if no selection, do nothing
     if (this.apiDocResultType.length === 0) {
