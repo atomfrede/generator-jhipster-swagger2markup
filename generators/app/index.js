@@ -56,7 +56,7 @@ module.exports = yeoman.generators.Base.extend({
     ];
 
     if (this.swagger2markupDefault == 'default') {
-      this.apiDocResultType = ["html5", "pdf"];
+      this.apiDocResultType = ["html5"];
       this.installAsciidocSample = true;
       done();
     } else {

@@ -19,6 +19,14 @@ Then run the module on a JHipster generated application:
 yo jhipster-swagger2markup
 ```
 
+If you want don't want to answer each question you can use
+
+```bash
+yo jhipster-swagger2markup default
+```
+
+to setup ``HTML5`` backend and ``asciidoc`` sample chapter.
+
 ### Gradle
 
 This plugin adds new tasks to your gradle build system
