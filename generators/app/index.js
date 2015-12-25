@@ -1,10 +1,8 @@
 'use strict';
-var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var packagejs = require(__dirname + '/../../package.json');
-var jhipster = require('generator-jhipster');
 
 // Stores JHipster variables
 var jhipsterVar = {
@@ -17,17 +15,17 @@ var jhipsterFunc = {};
 module.exports = yeoman.generators.Base.extend({
 
   initializing: {
-    templates: function() {
+    templates: function () {
       this.composeWith('jhipster:modules', {
         options: {
           jhipsterVar: jhipsterVar,
           jhipsterFunc: jhipsterFunc
         }
       });
-    },
+    }
   },
 
-  prompting: function() {
+  prompting: function () {
     var done = this.async();
 
     // Have Yeoman greet the user.
@@ -54,7 +52,7 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
-    this.prompt(prompts, function(props) {
+    this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
 
@@ -62,24 +60,21 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
-  writing: function() {
+  writing: function () {
     var done = this.async();
 
     this.packageName = jhipsterVar.packageName;
     this.packageFolder = jhipsterVar.packageFolder;
     this.angularAppName = jhipsterVar.angularAppName;
     this.buildTool = jhipsterVar.buildTool;
-    var javaDir = jhipsterVar.javaDir;
     var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
-    var resourceDir = jhipsterVar.resourceDir;
-    var webappDir = jhipsterVar.webappDir
 
     this.apiDocResultType = this.props.apiDocResultType;
     this.installAsciidocSample = this.props.installAsciidocSample;
 
     // if no selection, do nothing
     if (this.apiDocResultType.length === 0) {
-      console.log('Nothing to do...');
+      this.log('Nothing to do...');
       return;
     }
 
@@ -96,16 +91,16 @@ module.exports = yeoman.generators.Base.extend({
     this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java', this, {});
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
 
-    if (this.buildTool == 'gradle') {
+    if (this.buildTool === 'gradle') {
 
       this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('swagger2markup');
       jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.10.1');
-      jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.1')
+      jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.1');
 
-    } else if (this.buildTool == 'maven') {
+    } else if (this.buildTool === 'maven') {
 
       var swagger2markupConfiguration = '<executions>\n' +
         '<execution>\n' +
@@ -184,11 +179,10 @@ module.exports = yeoman.generators.Base.extend({
       jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + pluginDependencies + asiidoctorjConfiguration);
     }
 
-
     done();
   },
 
-  install: function() {
+  install: function () {
     // No op required here currently
   }
 });
