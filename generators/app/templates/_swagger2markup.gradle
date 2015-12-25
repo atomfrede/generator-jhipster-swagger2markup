@@ -17,12 +17,12 @@ asciidoctor {
     sources {
         include 'index.adoc'
     }
-    <%_ if(apiDocResultType == 'html5') { _%>
-    backends = ['html5']
-    <%_ } if(apiDocResultType == 'pdf') { _%>
-    backends = ['pdf']
-    <%_ } if(apiDocResultType == 'both') { _%>
+    <%_ if(apiDocResultType.indexOf('pdf') !== -1 && apiDocResultType.indexOf('html5') !== -1) { _%>
     backends = ['html5', 'pdf']
+    <%_ } else if(apiDocResultType.indexOf('html5') !== -1) { _%>
+    backends = ['html5']
+    <%_ } else if(apiDocResultType.indexOf('pdf') !== -1) { _%>
+    backends = ['pdf']
     <%_ } _%>
     attributes = [
         doctype: 'book',
