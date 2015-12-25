@@ -42,20 +42,14 @@ module.exports = yeoman.generators.Base.extend({
         default: false
       },
       {
-        type: 'list',
+        type: 'checkbox',
         name: 'apiDocResultType',
         message: 'Which file types you would like to generate?',
-        choices: [{
-          value: 'html5',
-          name: 'HTML5 '
-        }, {
-          value: 'pdf',
-          name: 'PDF'
-        }, {
-          value: 'both',
-          name: 'Generate HTML5 and PDF'
-        }],
-        default: 0
+        choices: [
+          {name: 'HTML5', value: 'html5'},
+          {name: 'PDF', value: 'pdf'}
+        ],
+        default: ['none']
       }
     ];
 
@@ -81,6 +75,12 @@ module.exports = yeoman.generators.Base.extend({
 
     this.apiDocResultType = this.props.apiDocResultType;
     this.installAsciidocSample = this.props.installAsciidocSample;
+
+    // if no selection, do nothing
+    if (this.apiDocResultType.length === 0) {
+      console.log('Nothing to do...');
+      return;
+    }
 
     if (this.installAsciidocSample) {
       this.template('src/docs/asciidoc/overview/_index.adoc', 'src/docs/asciidoc/overview/index.adoc');
@@ -133,39 +133,39 @@ module.exports = yeoman.generators.Base.extend({
         '</dependency>\n' +
         '</dependencies>';
 
-      var htmlOutput = '<execution>\n' +
-        '<id>output-html</id>\n' +
-        '<phase>install</phase>\n' +
-        '<goals>\n' +
-        '<goal>process-asciidoc</goal>\n' +
-        '</goals>\n' +
-        '<configuration>\n' +
-        '<backend>html5</backend>\n' +
-        '<outputDirectory>${project.basedir}/target/asciidoc/html5</outputDirectory>\n' +
-        '</configuration>\n' +
+      // Start executions
+      var executions = '<executions>\n';
+
+      if (this.apiDocResultType.indexOf('html5') !== -1) {
+        executions += '<execution>\n' +
+        '    <id>output-html</id>\n' +
+        '    <phase>install</phase>\n' +
+        '    <goals>\n' +
+        '        <goal>process-asciidoc</goal>\n' +
+        '    </goals>\n' +
+        '    <configuration>\n' +
+        '        <backend>html5</backend>\n' +
+        '        <outputDirectory>${project.basedir}/target/asciidoc/html5</outputDirectory>\n' +
+        '    </configuration>\n' +
         '</execution>\n';
-
-      var pdfOutput = '<execution>\n' +
-        '<id>output-pdf</id>\n' +
-        '<phase>install</phase>\n' +
-        '<goals>\n' +
-        '<goal>process-asciidoc</goal>\n' +
-        '</goals>\n' +
-        '<configuration>\n' +
-        '<backend>pdf</backend>\n' +
-        '<outputDirectory>${project.basedir}/target/asciidoc/pdf</outputDirectory>\n' +
-        '</configuration>\n' +
-        '</execution>\n';
-
-      var executions;
-
-      if (this.apiDocResultType === 'both') {
-        executions = '<executions>\n' + htmlOutput + pdfOutput + '</executions>\n';
-      } else if (this.apiDocResultType === 'html5') {
-        executions = '<executions>\n' + htmlOutput + '</executions>\n';
-      } else if (this.apiDocResultType === 'pdf') {
-        executions = '<executions>\n' + pdfOutput + '</executions>\n';
       }
+
+      if (this.apiDocResultType.indexOf('pdf') !== -1) {
+        executions += '<execution>\n' +
+        '    <id>output-pdf</id>\n' +
+        '    <phase>install</phase>\n' +
+        '    <goals>\n' +
+        '        <goal>process-asciidoc</goal>\n' +
+        '    </goals>\n' +
+        '    <configuration>\n' +
+        '        <backend>pdf</backend>\n' +
+        '        <outputDirectory>${project.basedir}/target/asciidoc/pdf</outputDirectory>\n' +
+        '    </configuration>\n' +
+        '</execution>\n';
+      }
+
+      executions += '</executions>\n';
+      // End executions
 
       var asiidoctorjConfiguration = '<configuration>\n' +
         '<sourceDirectory>${project.basedir}/src/docs/asciidoc</sourceDirectory>\n' +
