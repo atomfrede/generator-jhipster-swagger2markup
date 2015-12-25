@@ -3,6 +3,7 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var packagejs = require(__dirname + '/../../package.json');
 var jhipster = require('generator-jhipster');
 
 // Stores JHipster variables
@@ -31,7 +32,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the ' + chalk.red('JHipster swagger2markup') + ' generator!'
+      'Welcome to the ' + chalk.red('JHipster swagger2markup') + ' generator! ' + chalk.yellow('v' + packagejs.version)
     ));
 
     var prompts = [
