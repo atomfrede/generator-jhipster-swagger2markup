@@ -121,80 +121,80 @@ module.exports = yeoman.generators.Base.extend({
 
     } else if (this.buildTool === 'maven') {
 
-      var swagger2markupConfiguration = '<executions>\n' +
-        '    <execution>\n' +
-        '        <id>convert-swagger</id>\n' +
-        '        <phase>install</phase>\n' +
-        '        <goals>\n' +
-        '            <goal>process-swagger</goal>\n' +
-        '        </goals>\n' +
-        '    </execution>\n' +
-        '</executions>\n' +
-        '<configuration>\n' +
-        '    <outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
-        '    <inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n';
+      var swagger2markupConfiguration = '                <executions>\n' +
+        '                    <execution>\n' +
+        '                        <id>convert-swagger</id>\n' +
+        '                        <phase>install</phase>\n' +
+        '                        <goals>\n' +
+        '                            <goal>process-swagger</goal>\n' +
+        '                        </goals>\n' +
+        '                    </execution>\n' +
+        '                </executions>\n' +
+        '                <configuration>\n' +
+        '                    <outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
+        '                    <inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n';
         if (this.springRestDocSamples) {
-          swagger2markupConfiguration += '    <examplesDirectory>${project.basedir}/target/asciidoc</examplesDirectory>\n';
+          swagger2markupConfiguration += '                    <examplesDirectory>${project.basedir}/target/asciidoc</examplesDirectory>\n';
         }
-        swagger2markupConfiguration += '</configuration>\n';
+        swagger2markupConfiguration += '               </configuration>';
 
-      var pluginDependencies = '<dependencies>\n' +
-        '    <dependency>\n' +
-        '        <groupId>org.asciidoctor</groupId>\n' +
-        '        <artifactId>asciidoctorj-pdf</artifactId>\n' +
-        '        <version>1.5.0-alpha.10.1</version>\n' +
-        '    </dependency>\n' +
-        '    <dependency>\n' +
-        '        <groupId>org.asciidoctor</groupId>\n' +
-        '        <artifactId>asciidoctorj</artifactId>\n' +
-        '        <version>1.5.3.2</version>\n' +
-        '    </dependency>\n' +
-        '</dependencies>';
+      var pluginDependencies = '                <dependencies>\n' +
+        '                    <dependency>\n' +
+        '                        <groupId>org.asciidoctor</groupId>\n' +
+        '                        <artifactId>asciidoctorj-pdf</artifactId>\n' +
+        '                        <version>1.5.0-alpha.10.1</version>\n' +
+        '                    </dependency>\n' +
+        '                    <dependency>\n' +
+        '                        <groupId>org.asciidoctor</groupId>\n' +
+        '                        <artifactId>asciidoctorj</artifactId>\n' +
+        '                        <version>1.5.3.2</version>\n' +
+        '                    </dependency>\n' +
+        '                </dependencies>\n';
 
       // Start executions
-      var executions = '<executions>\n';
+      var executions = '                <executions>\n';
 
       if (this.apiDocResultType.indexOf('html5') !== -1) {
-        executions += '<execution>\n' +
-        '    <id>output-html</id>\n' +
-        '    <phase>install</phase>\n' +
-        '    <goals>\n' +
-        '        <goal>process-asciidoc</goal>\n' +
-        '    </goals>\n' +
-        '    <configuration>\n' +
-        '        <backend>html5</backend>\n' +
-        '        <outputDirectory>${project.basedir}/target/asciidoc/html5</outputDirectory>\n' +
-        '    </configuration>\n' +
-        '</execution>\n';
+        executions += '                    <execution>\n' +
+        '                        <id>output-html</id>\n' +
+        '                        <phase>install</phase>\n' +
+        '                        <goals>\n' +
+        '                            <goal>process-asciidoc</goal>\n' +
+        '                        </goals>\n' +
+        '                        <configuration>\n' +
+        '                            <backend>html5</backend>\n' +
+        '                            <outputDirectory>${project.basedir}/target/asciidoc/html5</outputDirectory>\n' +
+        '                        </configuration>\n' +
+        '                    </execution>\n';
       }
 
       if (this.apiDocResultType.indexOf('pdf') !== -1) {
-        executions += '<execution>\n' +
-        '    <id>output-pdf</id>\n' +
-        '    <phase>install</phase>\n' +
-        '    <goals>\n' +
-        '        <goal>process-asciidoc</goal>\n' +
-        '    </goals>\n' +
-        '    <configuration>\n' +
-        '        <backend>pdf</backend>\n' +
-        '        <outputDirectory>${project.basedir}/target/asciidoc/pdf</outputDirectory>\n' +
-        '    </configuration>\n' +
-        '</execution>\n';
+        executions += '                    <execution>\n' +
+        '                        <id>output-pdf</id>\n' +
+        '                        <phase>install</phase>\n' +
+        '                        <goals>\n' +
+        '                            <goal>process-asciidoc</goal>\n' +
+        '                        </goals>\n' +
+        '                        <configuration>\n' +
+        '                            <backend>pdf</backend>\n' +
+        '                            <outputDirectory>${project.basedir}/target/asciidoc/pdf</outputDirectory>\n' +
+        '                        </configuration>\n' +
+        '                    </execution>\n';
       }
 
-      executions += '</executions>\n';
+      executions += '                </executions>\n';
       // End executions
 
-      var asiidoctorjConfiguration = '<configuration>\n' +
-        '    <sourceDirectory>${project.basedir}/src/docs/asciidoc</sourceDirectory>\n' +
-        '    <sourceDocumentName>index.adoc</sourceDocumentName>\n' +
-        '    <attributes>\n' +
-        '        <doctype>book</doctype>\n' +
-        '        <toc>left</toc>\n' +
-        '        <toclevels>3</toclevels>\n' +
-        '        <generated>${project.basedir}/target/docs/asciidoc</generated>\n' +
-        '    </attributes>\n' +
-        '</configuration>\n';
+      var asiidoctorjConfiguration = '                <configuration>\n' +
+        '                    <sourceDirectory>${project.basedir}/src/docs/asciidoc</sourceDirectory>\n' +
+        '                    <sourceDocumentName>index.adoc</sourceDocumentName>\n' +
+        '                    <attributes>\n' +
+        '                        <doctype>book</doctype>\n' +
+        '                        <toc>left</toc>\n' +
+        '                        <toclevels>3</toclevels>\n' +
+        '                        <generated>${project.basedir}/target/docs/asciidoc</generated>\n' +
+        '                    </attributes>\n' +
+        '                </configuration>';
 
       jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');
       if (this.springRestDocSamples) {
