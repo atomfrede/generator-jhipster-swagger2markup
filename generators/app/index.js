@@ -134,7 +134,7 @@ module.exports = yeoman.generators.Base.extend({
         '    <outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
         '    <inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n';
         if (this.springRestDocSamples) {
-          swagger2markupConfiguration += '    <examplesDir>target/asciidoc</examplesDir>\n';
+          swagger2markupConfiguration += '    <examplesDirectory>${project.basedir}/target/asciidoc</examplesDirectory>\n';
         }
         swagger2markupConfiguration += '</configuration>\n';
 
@@ -197,6 +197,9 @@ module.exports = yeoman.generators.Base.extend({
         '</configuration>\n';
 
       jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');
+      if (this.springRestDocSamples) {
+          jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE', '<scope>test</scope>');
+      }
       jhipsterFunc.addMavenPlugin('com.redowlanalytics', 'swagger2markup-maven-plugin', '0.8.0', swagger2markupConfiguration);
       jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.2.1', executions + pluginDependencies + asiidoctorjConfiguration);
     }
