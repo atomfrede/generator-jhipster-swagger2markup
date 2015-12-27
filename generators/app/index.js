@@ -52,12 +52,19 @@ module.exports = yeoman.generators.Base.extend({
           {name: 'PDF', value: 'pdf'}
         ],
         default: ['none']
+      },
+      {
+        type: 'confirm',
+        name: 'springRestDocSamples',
+        message: 'Do you want to have example request generated via Spring RestDocs?',
+        default: false
       }
     ];
 
     if (this.swagger2markupDefault == 'default') {
       this.apiDocResultType = ["html5"];
       this.installAsciidocSample = true;
+      this.springRestDocSamples = true;
       done();
     } else {
       this.prompt(prompts, function (props) {
@@ -66,6 +73,7 @@ module.exports = yeoman.generators.Base.extend({
 
         this.apiDocResultType = this.props.apiDocResultType;
         this.installAsciidocSample = this.props.installAsciidocSample;
+        this.springRestDocSamples = this.props.springRestDocSamples;
         done();
       }.bind(this));
     }
@@ -104,6 +112,9 @@ module.exports = yeoman.generators.Base.extend({
       this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('swagger2markup');
       jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
+      if (this.springRestDocSamples) {
+        jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE');
+      }
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.10.1');
       jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.1');
@@ -111,30 +122,33 @@ module.exports = yeoman.generators.Base.extend({
     } else if (this.buildTool === 'maven') {
 
       var swagger2markupConfiguration = '<executions>\n' +
-        '<execution>\n' +
-        '<id>convert-swagger</id>\n' +
-        '<phase>install</phase>\n' +
-        '<goals>\n' +
-        '<goal>process-swagger</goal>\n' +
-        '</goals>\n' +
-        '</execution>\n' +
+        '    <execution>\n' +
+        '        <id>convert-swagger</id>\n' +
+        '        <phase>install</phase>\n' +
+        '        <goals>\n' +
+        '            <goal>process-swagger</goal>\n' +
+        '        </goals>\n' +
+        '    </execution>\n' +
         '</executions>\n' +
         '<configuration>\n' +
-        '<outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
-        '<inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n' +
-        '</configuration>\n';
+        '    <outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
+        '    <inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n';
+        if (this.springRestDocSamples) {
+          swagger2markupConfiguration += '    <examplesDir>target/asciidoc</examplesDir>\n';
+        }
+        swagger2markupConfiguration += '</configuration>\n';
 
       var pluginDependencies = '<dependencies>\n' +
-        '<dependency>\n' +
-        '<groupId>org.asciidoctor</groupId>\n' +
-        '<artifactId>asciidoctorj-pdf</artifactId>\n' +
-        '<version>1.5.0-alpha.10.1</version>\n' +
-        '</dependency>\n' +
-        '<dependency>\n' +
-        '<groupId>org.asciidoctor</groupId>\n' +
-        '<artifactId>asciidoctorj</artifactId>\n' +
-        '<version>1.5.3.2</version>\n' +
-        '</dependency>\n' +
+        '    <dependency>\n' +
+        '        <groupId>org.asciidoctor</groupId>\n' +
+        '        <artifactId>asciidoctorj-pdf</artifactId>\n' +
+        '        <version>1.5.0-alpha.10.1</version>\n' +
+        '    </dependency>\n' +
+        '    <dependency>\n' +
+        '        <groupId>org.asciidoctor</groupId>\n' +
+        '        <artifactId>asciidoctorj</artifactId>\n' +
+        '        <version>1.5.3.2</version>\n' +
+        '    </dependency>\n' +
         '</dependencies>';
 
       // Start executions
@@ -172,14 +186,14 @@ module.exports = yeoman.generators.Base.extend({
       // End executions
 
       var asiidoctorjConfiguration = '<configuration>\n' +
-        '<sourceDirectory>${project.basedir}/src/docs/asciidoc</sourceDirectory>\n' +
-        '<sourceDocumentName>index.adoc</sourceDocumentName>\n' +
-        '<attributes>\n' +
-        '<doctype>book</doctype>\n' +
-        '<toc>left</toc>\n' +
-        '<toclevels>3</toclevels>\n' +
-        '<generated>${project.basedir}/target/docs/asciidoc</generated>\n' +
-        '</attributes>\n' +
+        '    <sourceDirectory>${project.basedir}/src/docs/asciidoc</sourceDirectory>\n' +
+        '    <sourceDocumentName>index.adoc</sourceDocumentName>\n' +
+        '    <attributes>\n' +
+        '        <doctype>book</doctype>\n' +
+        '        <toc>left</toc>\n' +
+        '        <toclevels>3</toclevels>\n' +
+        '        <generated>${project.basedir}/target/docs/asciidoc</generated>\n' +
+        '    </attributes>\n' +
         '</configuration>\n';
 
       jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');

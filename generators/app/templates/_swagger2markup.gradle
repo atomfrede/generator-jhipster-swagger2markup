@@ -9,6 +9,9 @@ ext {
 convertSwagger2markup {
     dependsOn test
     inputDir swaggerOutputDir
+    <%_ if (springRestDocSamples) { _%>
+    examplesDir asciiDocOutputDir
+    <%_ } _%>
     pathsGroupedBy 'TAGS'
 }
 
