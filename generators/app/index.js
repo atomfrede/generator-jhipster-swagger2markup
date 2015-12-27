@@ -121,16 +121,7 @@ module.exports = yeoman.generators.Base.extend({
 
     } else if (this.buildTool === 'maven') {
 
-      var swagger2markupConfiguration = '                <executions>\n' +
-        '                    <execution>\n' +
-        '                        <id>convert-swagger</id>\n' +
-        '                        <phase>install</phase>\n' +
-        '                        <goals>\n' +
-        '                            <goal>process-swagger</goal>\n' +
-        '                        </goals>\n' +
-        '                    </execution>\n' +
-        '                </executions>\n' +
-        '                <configuration>\n' +
+      var swagger2markupConfiguration = '                <configuration>\n' +
         '                    <outputDirectory>${project.basedir}/target/docs/asciidoc</outputDirectory>\n' +
         '                    <inputDirectory>${project.basedir}/target/swagger</inputDirectory>\n';
         if (this.springRestDocSamples) {
