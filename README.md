@@ -19,6 +19,14 @@ Then run the module on a JHipster generated application:
 yo jhipster-swagger2markup
 ```
 
+If you want don't want to answer each question you can use
+
+```bash
+yo jhipster-swagger2markup default
+```
+
+to setup ``HTML5`` backend and ``asciidoc`` sample chapter.
+
 ### Gradle
 
 This plugin adds new tasks to your gradle build system
@@ -29,9 +37,9 @@ The generated static documentation can be found in ``build/asciidoc`` as html or
 
 ### Maven
 
-The html or pdf generation is bound to the ``install`` lifecycle phase.
+The html or pdf generation is bound to the ``install`` lifecycle phase. The ``swagger2markup`` creation is not bound to any phase, therefore you **must** create it explicitly during the test phase and process the swagger file:
 
-* ``mvnw install``
+* ``mvnw test swagger2markup:process-swagger install``
 
 The generated static documentation can be found in ``target/asciidoc`` as html or pdf.
 
