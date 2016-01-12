@@ -1,6 +1,6 @@
 package <%=packageName%>.web.rest;
 
-import com.mycompany.myapp.Application;
+import <%=packageName%>.Application;
 import org.junit.Before;
 <%_ if (springRestDocSamples) { _%>
 import org.junit.Rule;
