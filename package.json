@@ -13,10 +13,10 @@
     "jhipster-module"
   ],
   "dependencies": {
-    "yeoman-generator": "0.21.1",
-    "chalk": "1.0.0",
+    "yeoman-generator": "0.22.4",
+    "chalk": "1.1.1",
     "yosay": "1.0.2",
-    "generator-jhipster": ">=2.26.0"
+    "generator-jhipster": ">=2.27.0"
   },
   "devDependencies": {
     "yeoman-assert": "2.0.0",

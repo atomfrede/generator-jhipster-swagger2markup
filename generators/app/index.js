@@ -111,7 +111,7 @@ module.exports = yeoman.generators.Base.extend({
 
       this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('swagger2markup');
-      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.0.3');
+      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.3.1');
       if (this.springRestDocSamples) {
         jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE');
       }
@@ -187,7 +187,7 @@ module.exports = yeoman.generators.Base.extend({
         '                    </attributes>\n' +
         '                </configuration>';
 
-      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.0.3', '<scope>test</scope>');
+      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.3.1', '<scope>test</scope>');
       if (this.springRestDocSamples) {
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE', '<scope>test</scope>');
       }
