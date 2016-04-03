@@ -1,6 +1,6 @@
 package <%=packageName%>.web.rest;
 
-import <%=packageName%>.Application;
+import <%=packageName%>.<%= mainClass %>;
 import org.junit.Before;
 <%_ if (springRestDocSamples) { _%>
 import org.junit.Rule;
@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 <%_ if (springRestDocSamples) { _%>
 import org.springframework.restdocs.RestDocumentation;
 <%_ } _%>
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,7 +23,6 @@ import org.springframework.web.context.WebApplicationContext;
 import springfox.documentation.staticdocs.SwaggerResultHandler;
 
 import javax.inject.Inject;
-import java.io.File;
 import java.io.IOException;
 
 <%_ if (springRestDocSamples) { _%>
@@ -35,9 +35,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = <%= mainClass %>.class)
 @WebAppConfiguration
 @IntegrationTest
+@ActiveProfiles("dev")
 public class Swagger2MarkupIntTest {
 
     <%_ if (springRestDocSamples && buildTool == 'gradle') { _%>

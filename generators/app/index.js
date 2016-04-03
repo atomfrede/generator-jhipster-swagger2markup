@@ -86,6 +86,7 @@ module.exports = yeoman.generators.Base.extend({
     this.packageFolder = jhipsterVar.packageFolder;
     this.angularAppName = jhipsterVar.angularAppName;
     this.buildTool = jhipsterVar.buildTool;
+    this.mainClass = jhipsterVar.mainClassName;
     var javaTestDir = 'src/test/java/' + this.packageFolder + '/';
 
     // if no selection, do nothing
@@ -109,9 +110,9 @@ module.exports = yeoman.generators.Base.extend({
 
     if (this.buildTool === 'gradle') {
 
-      this.template('_swagger2markup.gradle', 'swagger2markup.gradle');
-      jhipsterFunc.applyFromGradleScript('swagger2markup');
-      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.3.1');
+      this.template('gradle/_swagger2markup.gradle', 'gradle/swagger2markup.gradle');
+      jhipsterFunc.applyFromGradleScript('gradle/swagger2markup');
+      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.4.0');
       if (this.springRestDocSamples) {
         jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE');
       }
