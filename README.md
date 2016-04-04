@@ -43,10 +43,6 @@ The html or pdf generation is bound to the ``install`` lifecycle phase. The ``sw
 
 The generated static documentation can be found in ``target/asciidoc`` as html or pdf.
 
-#### Limitation
-
-As the latest ``swagger2markup-maven-plugin`` is not [properly deployed to maven central](https://github.com/Swagger2Markup/swagger2markup-maven-plugin/issues/9) grouping by tag doesn't work with maven yet.
-
 ### Result
 
 ![resulting html documentation][result-image]
