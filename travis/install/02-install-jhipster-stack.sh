@@ -1,16 +1,19 @@
 #!/bin/bash
 set -ev
 #-------------------------------------------------------------------------------
-# Install yeoman, bower, grunt and gulp
+# Maybe speed up the build
+#-------------------------------------------------------------------------------
+npm set progress=false
+#-------------------------------------------------------------------------------
+# Install yeoman, bower and gulp
 #-------------------------------------------------------------------------------
 npm install -g yo
 npm install -g bower
-npm install -g grunt-cli
-npm install -g gulp
-npm install -g generator-jhipster
+npm install -g gulp-cli
 #-------------------------------------------------------------------------------
-# Install the latest version of generator-jhipster-swagger2markup
+# Install the latest version of JHipster
 #-------------------------------------------------------------------------------
-cd $TRAVIS_BUILD_DIR/
+cd "$TRAVIS_BUILD_DIR"/
 npm install
 npm link
+npm test
