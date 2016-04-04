@@ -17,7 +17,7 @@ rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
 
 npm link generator-jhipster
 yo jhipster --force --no-insight
-yo jhipster-leaflet default --force --no-insight
+yo jhipster-swagger2markup default --force --no-insight
 ls -al "$HOME"/"$JHIPSTER"
 ls -al "$HOME"/"$JHIPSTER"/node_modules/
 ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/
