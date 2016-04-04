@@ -5,7 +5,10 @@ set -ev
 #--------------------------------------------------
 cd "$HOME"/"$JHIPSTER"
 if [ "$JHIPSTER" != "app-gradle" ]; then
-  mvn test swagger2markup:process-swagger install
+  mvn test
 else
-  ./gradlew asciidoctor
+  ./gradlew test
+fi
+if [ "$JHIPSTER" != "app-microservice" ]; then
+  gulp test --no-notification
 fi

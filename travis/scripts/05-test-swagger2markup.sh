@@ -5,7 +5,7 @@ set -ev
 #-------------------------------------------------------------------------------
 cd $HOME/$JHIPSTER
 if [ $JHIPSTER != "app-gradle" ]; then
-  mvn install
+  mvn test swagger2markup:process-swagger install
   ls -al target/asciidoc/ target/asciidoc/html5/
 else
   ./gradlew asciidoctor
