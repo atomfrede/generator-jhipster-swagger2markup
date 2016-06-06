@@ -114,11 +114,11 @@ module.exports = yeoman.generators.Base.extend({
       jhipsterFunc.applyFromGradleScript('gradle/swagger2markup');
       jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.4.0');
       if (this.springRestDocSamples) {
-        jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE');
+        jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.0.RELEASE');
       }
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.11');
-      jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '0.9.2');
+      jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '1.0.0');
 
     } else if (this.buildTool === 'maven') {
 
@@ -189,11 +189,11 @@ module.exports = yeoman.generators.Base.extend({
         '                    </attributes>\n' +
         '                </configuration>';
 
-      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.3.1', '<scope>test</scope>');
+      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.4.0', '<scope>test</scope>');
       if (this.springRestDocSamples) {
-          jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.0.1.RELEASE', '<scope>test</scope>');
+          jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.0.RELEASE', '<scope>test</scope>');
       }
-      jhipsterFunc.addMavenPlugin('io.github.robwin', 'swagger2markup-maven-plugin', '0.9.3', swagger2markupConfiguration);
+      jhipsterFunc.addMavenPlugin('io.github.robwin', 'swagger2markup-maven-plugin', '1.0.0', swagger2markupConfiguration);
       jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.3', executions + pluginDependencies + asiidoctorjConfiguration);
     }
 
