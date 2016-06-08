@@ -2,19 +2,24 @@ apply plugin: 'org.asciidoctor.convert'
 apply plugin: 'io.github.swagger2markup'
 
 ext {
-    asciiDocOutputDir = file("${buildDir}/asciidoc")
-    swaggerOutputDir = file("${buildDir}/swagger/swagger.json")
+    asciiDocOutputDir = file("${buildDir}/asciidoc/generated")
+    swaggerOutputDir = file("${buildDir}/swagger")
+    snippetsOutputDir = file("${buildDir}/asciidoc/snippets")
 }
 
 convertSwagger2markup {
     dependsOn test
-    swaggerInput swaggerOutputDir.getAbsolutePath()
+    swaggerInput s"${swaggerOutputDir}/swagger.json"
     outputDir asciiDocOutputDir
+
+    <%_ if (springRestDocSamples) { _%>
+    config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
+              'swagger2markup.pathsGroupedBy' : 'TAGS',
+               'swagger2markup.extensions.springRestDocs.snippetBaseUri': snippetsOutputDir.getAbsolutePath()]
+    <%_ } else { _%>
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
               'swagger2markup.pathsGroupedBy' : 'TAGS']
-    <%_ if (springRestDocSamples) { _%>
-    examplesDir asciiDocOutputDir
-    <%_ } _%>
+    <%} _%>
 }
 
 asciidoctorj {
