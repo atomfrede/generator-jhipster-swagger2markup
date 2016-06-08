@@ -3,7 +3,7 @@ apply plugin: 'io.github.swagger2markup'
 
 ext {
     asciiDocOutputDir = file("${buildDir}/asciidoc")
-    swaggerOutputDir = file("${buildDir}/swagger/swagger.json"")
+    swaggerOutputDir = file("${buildDir}/swagger/swagger.json")
 }
 
 convertSwagger2markup {

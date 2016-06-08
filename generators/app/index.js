@@ -119,7 +119,7 @@ module.exports = yeoman.generators.Base.extend({
       }
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctor-gradle-plugin', '1.5.3');
       jhipsterFunc.addGradlePlugin('org.asciidoctor', 'asciidoctorj-pdf', '1.5.0-alpha.11');
-      jhipsterFunc.addGradlePlugin('io.github.robwin', 'swagger2markup-gradle-plugin', '1.0.0');
+      jhipsterFunc.addGradlePlugin('io.github.swagger2markup', 'swagger2markup-gradle-plugin', '1.0.0');
 
     } else if (this.buildTool === 'maven') {
 
@@ -194,7 +194,7 @@ module.exports = yeoman.generators.Base.extend({
       if (this.springRestDocSamples) {
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.0.RELEASE', '<scope>test</scope>');
       }
-      jhipsterFunc.addMavenPlugin('io.github.robwin', 'swagger2markup-maven-plugin', '1.0.0', swagger2markupConfiguration);
+      jhipsterFunc.addMavenPlugin('io.github', 'swagger2markup-maven-plugin', '1.0.0', swagger2markupConfiguration);
       jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.3', executions + pluginDependencies + asiidoctorjConfiguration);
     }
 
