@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = <%= mainClass %>.class)
 @WebAppConfiguration
 @IntegrationTest
-@ActiveProfiles("dev")
+@ActiveProfiles("dev,s2m")
 public class Swagger2MarkupIntTest {
 
     <%_ if (springRestDocSamples && buildTool == 'gradle') { _%>

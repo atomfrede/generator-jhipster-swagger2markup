@@ -108,6 +108,7 @@ module.exports = yeoman.generators.Base.extend({
     this.template('src/test/java/package/web/rest/_Swagger2MarkupIntTest.java', javaTestDir + 'web/rest/Swagger2MarkupIntTest.java', this, {});
     this.template('src/docs/asciidoc/_index.adoc', 'src/docs/asciidoc/index.adoc');
 
+    this.template('src/test/resources/config/_application-s2m.yml', 'src/test/resources/config/application-s2m.yml', this, {});
     if (this.buildTool === 'gradle') {
 
       this.template('gradle/_swagger2markup.gradle', 'gradle/swagger2markup.gradle');

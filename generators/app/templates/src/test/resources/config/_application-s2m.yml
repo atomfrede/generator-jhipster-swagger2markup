@@ -1,0 +1,4 @@
+jhipster:
+    swagger:
+        contactName: <%=packageName%>
+        contactEmail: <%=packageName%>@example.org
