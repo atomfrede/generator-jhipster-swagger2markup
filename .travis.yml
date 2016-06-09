@@ -18,7 +18,6 @@ env:
   - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
   - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
-  - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0
   - JHIPSTER=app-gradle
 install:
   - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
