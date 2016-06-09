@@ -9,13 +9,13 @@ ext {
 
 convertSwagger2markup {
     dependsOn test
-    swaggerInput s"${swaggerOutputDir}/swagger.json"
+    swaggerInput "${swaggerOutputDir}/swagger.json"
     outputDir asciiDocOutputDir
 
     <%_ if (springRestDocSamples) { _%>
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
               'swagger2markup.pathsGroupedBy' : 'TAGS',
-               'swagger2markup.extensions.springRestDocs.snippetBaseUri': snippetsOutputDir.getAbsolutePath()]
+              'swagger2markup.extensions.springRestDocs.snippetBaseUri': snippetsOutputDir.getAbsolutePath()]
     <%_ } else { _%>
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
               'swagger2markup.pathsGroupedBy' : 'TAGS']

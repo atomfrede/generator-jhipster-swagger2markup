@@ -12,7 +12,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 <%_ if (springRestDocSamples) { _%>
-import org.springframework.restdocs.RestDocumentation;
+import org.springframework.restdocs.JUnitRestDocumentation;
 <%_ } _%>
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,11 +43,11 @@ public class Swagger2MarkupIntTest {
 
     <%_ if (springRestDocSamples && buildTool == 'gradle') { _%>
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("build/asciidoc");
+    public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("build/asciidoc/snippets");
     <%_ } _%>
     <%_ if (springRestDocSamples && buildTool == 'maven') { _%>
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("target/asciidoc");
+    public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/docs/asciidoc/snippets");
     <%_ } _%>
 
     @Inject
@@ -67,7 +67,7 @@ public class Swagger2MarkupIntTest {
     public void getAllUsersSamples() throws Exception {
         this.mockMvc.perform(get("/api/users")
           .accept(MediaType.APPLICATION_JSON))
-          .andDo(document("getallusers", preprocessResponse(prettyPrint())))
+          .andDo(document("getAllUsersUsingGET", preprocessResponse(prettyPrint())))
           .andExpect(status().isOk());
     }<%_ } _%>
 
