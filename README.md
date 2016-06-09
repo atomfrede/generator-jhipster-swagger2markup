@@ -39,7 +39,7 @@ The generated static documentation can be found in ``build/asciidoc`` as html or
 
 The html or pdf generation is bound to the ``install`` lifecycle phase. The ``swagger2markup`` creation is not bound to any phase, therefore you **must** create it explicitly during the test phase and process the swagger file:
 
-* ``mvnw test swagger2markup:process-swagger install``
+* ``mvnw test swagger2markup:convertSwagger2markup install``
 
 The generated static documentation can be found in ``target/asciidoc`` as html or pdf.
 

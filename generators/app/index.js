@@ -140,7 +140,7 @@ module.exports = yeoman.generators.Base.extend({
         '                       <swagger2markup.pathsGroupedBy>TAGS</swagger2markup.pathsGroupedBy>\n';
 
         if (this.springRestDocSamples) {
-          swagger2markupConfiguration += '                      <swagger2markup.extensions.springRestDocs.snippetBaseUri>/target/docs/asciidoc/snippet</swagger2markup.extensions.springRestDocs.snippetBaseUri>\n';
+          swagger2markupConfiguration += '                      <swagger2markup.extensions.springRestDocs.snippetBaseUri>${project.basedir}/target/docs/asciidoc/snippets</swagger2markup.extensions.springRestDocs.snippetBaseUri>\n';
         }
         swagger2markupConfiguration += '                    </config>\n';
         swagger2markupConfiguration += '               </configuration>\n';
@@ -207,6 +207,7 @@ module.exports = yeoman.generators.Base.extend({
       if (this.springRestDocSamples) {
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.0.RELEASE', '<scope>test</scope>');
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-core', '1.1.0.RELEASE', '<scope>test</scope>');
+          jhipsterFunc.addMavenDependency('io.github.swagger2markup', 'swagger2markup-spring-restdocs-ext', '1.0.0', '<scope>test</scope>');
       }
       jhipsterFunc.addMavenPlugin('io.github.swagger2markup', 'swagger2markup-maven-plugin', '1.0.0', swagger2markupPuginDependencies + swagger2markupConfiguration);
       jhipsterFunc.addMavenPlugin('org.asciidoctor', 'asciidoctor-maven-plugin', '1.5.3', executions + pluginDependencies + asiidoctorjConfiguration);
