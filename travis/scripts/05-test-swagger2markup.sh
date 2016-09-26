@@ -10,4 +10,4 @@ cd $HOME/$JHIPSTER
 #else
   ./gradlew asciidoctor
   ls -al build/asciidoc/ build/asciidoc/html5/
-fi
+#fi
