@@ -4,9 +4,16 @@ services:
   - docker
 language: node_js
 node_js:
-  - "4.4.2"
+  - "4.5.0"
 jdk:
   - oraclejdk8
+cache:
+ directories:
+ - node_modules
+ - $HOME/.m2
+ - $HOME/.gradle
+ - $HOME/app/node_modules
+ - $HOME/app/node
 env:
   global:
   - JHIPSTER_NODE_CACHE=1
