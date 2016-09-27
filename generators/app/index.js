@@ -22,7 +22,7 @@ module.exports = yeoman.generators.Base.extend({
           jhipsterFunc: jhipsterFunc
         }
       });
-      if (args == 'default') {
+      if (args === 'default') {
         this.swagger2markupDefault = 'default';
       }
     }
@@ -61,8 +61,8 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
-    if (this.swagger2markupDefault == 'default') {
-      this.apiDocResultType = ["html5"];
+    if (this.swagger2markupDefault === 'default') {
+      this.apiDocResultType = ['html5'];
       this.installAsciidocSample = true;
       this.springRestDocSamples = true;
       done();
