@@ -113,7 +113,7 @@ module.exports = yeoman.generators.Base.extend({
 
       this.template('gradle/_swagger2markup.gradle', 'gradle/swagger2markup.gradle');
       jhipsterFunc.applyFromGradleScript('gradle/swagger2markup');
-      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.5.0');
+      jhipsterFunc.addGradleDependency('testCompile', 'io.springfox', 'springfox-staticdocs', '2.6.0');
       if (this.springRestDocSamples) {
         jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.2.RELEASE');
         jhipsterFunc.addGradleDependency('testCompile', 'org.springframework.restdocs', 'spring-restdocs-core', '1.1.2.RELEASE');
@@ -154,7 +154,7 @@ module.exports = yeoman.generators.Base.extend({
         '                    <dependency>\n' +
         '                        <groupId>org.asciidoctor</groupId>\n' +
         '                        <artifactId>asciidoctorj</artifactId>\n' +
-        '                        <version>1.5.4</version>\n' +
+        '                        <version>1.5.4.1</version>\n' +
         '                    </dependency>\n' +
         '                </dependencies>\n';
 
@@ -203,7 +203,7 @@ module.exports = yeoman.generators.Base.extend({
         '                    </attributes>\n' +
         '                </configuration>';
 
-      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.4.0', '<scope>test</scope>');
+      jhipsterFunc.addMavenDependency('io.springfox', 'springfox-staticdocs', '2.6.0', '<scope>test</scope>');
       if (this.springRestDocSamples) {
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-mockmvc', '1.1.2.RELEASE', '<scope>test</scope>');
           jhipsterFunc.addMavenDependency('org.springframework.restdocs', 'spring-restdocs-core', '1.1.2.RELEASE', '<scope>test</scope>');
