@@ -7,23 +7,19 @@ import org.junit.Rule;
 <%_ } _%>
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 <%_ if (springRestDocSamples) { _%>
 import org.springframework.restdocs.JUnitRestDocumentation;
 <%_ } _%>
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import springfox.documentation.staticdocs.SwaggerResultHandler;
-
-import javax.inject.Inject;
-import java.io.IOException;
 
 <%_ if (springRestDocSamples) { _%>
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -34,11 +30,10 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = <%= mainClass %>.class)
-@WebAppConfiguration
-@IntegrationTest
-@ActiveProfiles("dev,s2m")
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = <%= mainClass %>.class)
+@AutoConfigureMockMvc
+@ActiveProfiles("swagger,s2m")
 public class Swagger2MarkupIntTest {
 
     <%_ if (springRestDocSamples && buildTool == 'gradle') { _%>
@@ -50,13 +45,13 @@ public class Swagger2MarkupIntTest {
     public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/docs/asciidoc/snippets");
     <%_ } _%>
 
-    @Inject
+    @Autowired
     private WebApplicationContext context;
-
+    @Autowired
     private MockMvc mockMvc;
 
     @Before
-    public void setup() throws IOException {
+    public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
         <%_ if (springRestDocSamples) { _%>.apply(documentationConfiguration(this.restDocumentation))<%_ } _%>
         .build();
