@@ -37,6 +37,25 @@ The generated static documentation can be found in ``build/asciidoc`` as html or
 
 ### Maven
 
+#### Requirements
+
+You **must** add the `jcenter` repository to your `pom.xml`, otherwise some dependencies can't be resolved!
+
+```xml
+<repositories>
+  <repository>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+    <id>central</id>
+    <name>bintray</name>
+    <url>http://jcenter.bintray.com</url>
+  </repository>
+</repositories>
+```
+ 
+ #### Usage
+
 The html or pdf generation is bound to the ``install`` lifecycle phase. The ``swagger2markup`` creation is not bound to any phase, therefore you **must** create it explicitly during the test phase and process the swagger file:
 
 * ``mvnw test swagger2markup:convertSwagger2markup install``
