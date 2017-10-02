@@ -1,14 +1,16 @@
 #!/bin/bash
-set -ev
-#--------------------------------------------------
+set -e
+
+#-------------------------------------------------------------------------------
 # Launch tests
-#--------------------------------------------------
-cd "$HOME"/"$JHIPSTER"
-if [ "$JHIPSTER" != "app-gradle" ]; then
-  mvn test
-else
-  ./gradlew test
-fi
-if [ "$JHIPSTER" != "app-microservice" ]; then
-  gulp test --no-notification
+#-------------------------------------------------------------------------------
+cd "$APP_FOLDER"
+if [ -f "mvnw" ]; then
+    ./mvnw test \
+        swagger2markup:convertSwagger2markup install
+    ls -al target/asciidoc/ target/asciidoc/html5/
+elif [ -f "gradlew" ]; then
+    ./gradlew \
+        asciidoctor --console plain
+    ls -al build/asciidoc/ build/asciidoc/html5/
 fi

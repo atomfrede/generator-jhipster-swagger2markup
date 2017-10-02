@@ -8,6 +8,6 @@ cd $HOME/$JHIPSTER
   # mvn test swagger2markup:convertSwagger2markup install
   # ls -al target/asciidoc/ target/asciidoc/html5/
 #else
-  ./gradlew asciidoctor
+  ./gradlew asciidoctor --console plain
   ls -al build/asciidoc/ build/asciidoc/html5/
 #fi

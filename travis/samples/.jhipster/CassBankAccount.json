@@ -1,4 +1,5 @@
 {
+    "fluentMethods": true,
     "fields": [
         {
             "fieldName": "userId",
@@ -41,6 +42,18 @@
         {
             "fieldName": "active",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "picture",
+            "fieldType": "ByteBuffer",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "operationsFile",
+            "fieldType": "ByteBuffer"
         }
     ],
     "changelogDate": "20150805124838",

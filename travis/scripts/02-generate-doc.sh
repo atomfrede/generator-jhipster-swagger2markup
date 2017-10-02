@@ -1,15 +1,8 @@
 #!/bin/bash
 set -ev
 #-------------------------------------------------------------------------------
-# Check all versions
+# Generate the default audit behaviour
 #-------------------------------------------------------------------------------
-java -version
-git --version
-mvn -v
-node -v
-npm -v
-bower -v
-yo --version
-gulp -v
-docker version
-docker-compose version
+cd "$APP_FOLDER"
+npm link generator-jhipster-swagger2markup
+yo jhipster-swagger2markup default --force --no-insight
