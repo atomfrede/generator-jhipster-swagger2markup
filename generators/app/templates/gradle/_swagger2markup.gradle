@@ -23,7 +23,7 @@ convertSwagger2markup {
 }
 
 asciidoctorj {
-    version = '1.5.5'
+    version = '1.5.6'
 }
 
 asciidoctor {
