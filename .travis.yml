@@ -21,7 +21,7 @@ env:
   global:
     - PROFILE=dev
     - RUN_APP=1
-    - PROTRACTOR=0
+    - PROTRACTOR=1
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
     - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
@@ -33,8 +33,9 @@ env:
     - SPRING_JPA_SHOW_SQL=false
   matrix:
     - JHIPSTER=ngx-mysql PROFILE=prod RUN_APP=0
-    - JHIPSTER=ngx-psql-noi18n PROFILE=prod PROTRACTOR=0
-    - JHIPSTER=gradle-ngx-mysql PROTRACTOR=0
+    - JHIPSTER=ngx-psql-noi18n PROFILE=prod PROTRACTOR=1
+    - JHIPSTER=gradle-ngx-mysql PROTRACTOR=1
+    - JHIPSTER=ms-ngx-gateway-eureka
     - JHIPSTER=ng1-mysql PROFILE=prod RUN_APP=0
     - JHIPSTER=ng1-psql-noi18n PROFILE=prod
     - JHIPSTER=gradle-ng1-mysql
