@@ -17,31 +17,51 @@
     "jhipster-module"
   ],
   "dependencies": {
-    "yeoman-generator": "0.22.4",
-    "chalk": "1.1.1",
+    "yeoman-generator": "2.0.1",
+    "yeoman-environment": "2.0.5",
+    "shelljs": "0.7.8",
+    "chalk": "2.3.0",
+    "glob": "7.1.2",
+    "semver": "5.4.1",
     "yosay": "1.0.2",
     "generator-jhipster": ">=4.8.0"
   },
   "devDependencies": {
-    "yeoman-assert": "2.0.0",
-    "gulp": "3.6.0",
-    "gulp-eslint": "1.0.0",
-    "gulp-exclude-gitignore": "1.0.0",
-    "gulp-istanbul": "0.9.0",
-    "gulp-mocha": "2.0.0",
-    "gulp-plumber": "1.0.0",
-    "gulp-nsp": "2.1.0"
+    // "yeoman-assert": "2.0.0",
+    // "gulp": "3.6.0",
+    // "gulp-eslint": "1.0.0",
+    // "gulp-exclude-gitignore": "1.0.0",
+    // "gulp-istanbul": "0.9.0",
+    // "gulp-mocha": "2.0.0",
+    // "gulp-plumber": "1.0.0",
+    // "gulp-nsp": "2.1.0",
+    "eslint": "4.10.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "fs-extra": "4.0.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atomfrede/generator-jhipster-swagger2markup.git"
   },
-  "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
-  },
+  // "scripts": {
+  //   "prepublish": "gulp prepublish",
+  //   "test": "gulp"
+  // },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/atomfrede/generator-jhipster-swagger2markup/issues"
+  },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=2.14.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "release": "npm run lint && git push && git push --tags && npm publish",
+    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release:major": "npm version major -a -m \"Update to %s\" && npm run release"
   }
 }
