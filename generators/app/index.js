@@ -1,6 +1,6 @@
 
 
-const yeoman = require('yeoman-generator');
+const BaseGenerator = require('generator-jhipster/generators/generator-base');
 const chalk = require('chalk');
 const yosay = require('yosay');
 
@@ -14,7 +14,7 @@ const jhipsterVar = {
 // Stores JHipster functions
 const jhipsterFunc = {};
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = BaseGenerator.extend({
 
   initializing: {
     templates(args) {
