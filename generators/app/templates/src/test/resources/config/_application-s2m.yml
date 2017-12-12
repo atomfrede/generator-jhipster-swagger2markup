@@ -2,3 +2,5 @@ jhipster:
     swagger:
         contactName: <%=packageName%>
         contactEmail: <%=packageName%>@example.org
+management:
+    context-path: /management
